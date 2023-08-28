@@ -223,9 +223,23 @@ function update_draft(id)
     response = HTTP.get(url)
     response_body = String(response.body)
     parsed_json = JSON.parse(response_body)
-    drafted = reset_draft(10) #MIGHT NEED EDITING
+    drafted = reset_draft(10)
+
+    #only for current draft
+    rosterID_to_team = Dict()
+    rosterID_to_team[1] = 1
+    rosterID_to_team[9] = 2
+    rosterID_to_team[5] = 3
+    rosterID_to_team[8] = 4
+    rosterID_to_team[4] = 5
+    rosterID_to_team[10] = 6
+    rosterID_to_team[2] = 7
+    rosterID_to_team[3] = 8
+    rosterID_to_team[6] = 9
+    rosterID_to_team[7] = 10
+
     for pick in parsed_json
-        team = Int64(pick["draft_slot"])
+        team = rosterID_to_team[pick["roster_id"]]
         position = pick["metadata"]["position"]
         name = pick["metadata"]["first_name"] * " " * pick["metadata"]["last_name"]
         name = replace(name, "." => "")
