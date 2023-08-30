@@ -226,20 +226,21 @@ function update_draft(id)
     drafted = reset_draft(10)
 
     #only for current draft
-    rosterID_to_team = Dict()
-    rosterID_to_team[1] = 1
-    rosterID_to_team[9] = 2
-    rosterID_to_team[5] = 3
-    rosterID_to_team[8] = 4
-    rosterID_to_team[4] = 5
-    rosterID_to_team[10] = 6
-    rosterID_to_team[2] = 7
-    rosterID_to_team[3] = 8
-    rosterID_to_team[6] = 9
-    rosterID_to_team[7] = 10
+    # rosterID_to_team = Dict()
+    # rosterID_to_team[1] = 1
+    # rosterID_to_team[9] = 2
+    # rosterID_to_team[5] = 3
+    # rosterID_to_team[8] = 4
+    # rosterID_to_team[4] = 5
+    # rosterID_to_team[10] = 6
+    # rosterID_to_team[2] = 7
+    # rosterID_to_team[3] = 8
+    # rosterID_to_team[6] = 9
+    # rosterID_to_team[7] = 10
 
     for pick in parsed_json
-        team = rosterID_to_team[pick["roster_id"]]
+        # team = rosterID_to_team[pick["roster_id"]]
+        team = pick["draft_slot"]
         position = pick["metadata"]["position"]
         name = pick["metadata"]["first_name"] * " " * pick["metadata"]["last_name"]
         name = replace(name, "." => "")
