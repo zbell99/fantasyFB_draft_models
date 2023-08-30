@@ -3,7 +3,7 @@ using HTTP, JSON
 
 function initialize_data(dynasty = true)
     #data = projections for each player
-    data = DataFrame(CSV.File("dynasty_data.csv"))
+    data = DataFrame(CSV.File("vorp.csv"))
     #fill missing with 0 in julia
     replace!(data.Dyn_SF, missing => 500)
     replace!(data.RedraftHalfPPR, missing => 500)
